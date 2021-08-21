@@ -1,10 +1,12 @@
-
+import Header from './components/Header';
+import StreamList from './components/StreamList';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-     KOji gušt
+     <Header/>
+     <StreamList/>
     </div>
   );
 }
