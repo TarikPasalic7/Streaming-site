@@ -1,0 +1,9 @@
+{
+  
+  "/:resource/new": "/:resource",
+  "/:resource/edit/:id": "/:resource/:id",
+  "/:resource/delete/:id": "/:resource/:id"
+  
+
+
+}
