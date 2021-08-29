@@ -4,14 +4,19 @@ import StreamCreate from './components/StreamCreate';
 import StreamEdit from './components/StreamEdit';
 import StreamDelete from './components/StreamDelete';
 import StreamShow from './components/StreamShow';
+import React from 'react';
+import {connect} from 'react-redux';
                     
 import {Route,BrowserRouter} from 'react-router-dom';
+import { selectedUser } from './actions';
 import './App.css';
 
-function App() {
+function App({users}) {
   return (
+   
     <BrowserRouter>
     <div className="App">
+      {console.log(users)}
      <Header/>
      <Route path="/StreamList" component={StreamList} />
      <Route path="/StreamCreate" component={StreamCreate} />
@@ -23,5 +28,8 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
+const mapStateToProps = state => {
+  
+  return {users:state.users}; 
+}
+export default connect(mapStateToProps,{selectedUser})(App);
