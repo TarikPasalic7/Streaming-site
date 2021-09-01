@@ -1,5 +1,7 @@
 import React,{useEffect} from "react";
 import {connect} from 'react-redux';
+import photo from '../camera.png';
+import { useHistory } from "react-router-dom";
 
 import { requestStreams, selectedUser } from '../actions';
 
@@ -12,19 +14,24 @@ const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
         fetchMyAPI(); 
       
         }, [])
-  
+        const history = useHistory();
+
+        function handleClick() {
+          history.push("/StreamCreate");
+        }
     return (<div className="container">
             <h1>Streams</h1>
          {streams.map(element=>{
                return( <div key ={element.id}  className="listcontainer">
                <div className="item">
-                   <img className="pic"></img>
+                   <img className="pic" src={photo}/>
+                   <div className="streamitems">
                    <h3 className="streamh">
-                     {element.title} </h3>      <span>{element.description}</span>   <button className="editbutton">EDIT</button><button className="deletebutton">DELETE</button>    </div> 
+                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>   <button className="editbutton">EDIT</button><button className="deletebutton">DELETE</button>    </div> 
               </div>)
          })
        } 
-        <button>Create Stream</button>
+        <button className="createbutton" onClick={handleClick}>Create Stream</button>
     </div>)
 
 
