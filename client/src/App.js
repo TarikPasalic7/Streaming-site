@@ -13,22 +13,15 @@ import { requestStreams, selectedUser } from './actions';
 import './App.css';
 
 
-function App({users,streams,isPending,error,onRequestStreams}) {
+function App() {
 
- useEffect(() => {
-  async function fetchMyAPI() {
-    onRequestStreams() //calling function with dispatch
-  }
 
-  fetchMyAPI(); 
-
-  }, [])
 
   return (
    
     <BrowserRouter>
     <div className="App">
-     {console.log(streams)}
+    
     
    
      <Header/>
@@ -43,21 +36,5 @@ function App({users,streams,isPending,error,onRequestStreams}) {
     </BrowserRouter>
   );
 }
-const mapStateToProps = state => {
-  
-  return {users:state.users,
-    streams:state.requestStreams.streams,
-    isPending:state.requestStreams.isPending,
-    error:state.requestStreams 
-  }; 
-}
 
-const mapDispatchToProps = (dispatch) => {
-  
-  return {
-    selectedUser,
-    onRequestStreams:()=>dispatch(requestStreams())
-
-  }; 
-}
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default App;

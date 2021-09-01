@@ -2,27 +2,25 @@
   "streams": [
     {
       "id": 1,
-      "firstName": "Alastair",
-      "lastName": "Cook",
-      "age": 37
+      "title": "Alastair",
+      "description": "Cook"
+      
     },
     {
       "id": 2,
-      "firstName": "hakala",
-      "lastName": "Book",
-      "age": 3
+      "title": "Game of thrones",
+      "description": "new game og thrones video"
+      
     },
     {
       "id": 21,
-      "firstName": "A222lastair",
-      "lastName": "Cook",
-      "age": 372
+      "title": "Mortal Kombat 12",
+      "description": "Watch new mortak kombat game"
     },
     {
       "id": 91,
-      "firstName": "Air",
-      "lastName": "Cooook",
-      "age": 31
+      "title": "nba 2k22",
+      "description": "PLaying the new nba2k game"
     }
   ]
 }
