@@ -19,21 +19,19 @@ const renderField = ({
   )
   const requiredtitle = value => (value || typeof value === 'number' ? undefined : 'You must enter a title');
   const requireddescription = value => (value || typeof value === 'number' ? undefined : 'You must enter a description')
-const submit =(val)=>{
-    console.log(val);
-  }
+
 let ReduxForm = props => {
 
      
   const { handleSubmit, pristine, reset, submitting  } = props
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <form onSubmit={handleSubmit}>
        <div>
            
         <label>Enter Title</label>
         <div>
           <Field
-            name="firstName"
+            name="title"
             component={renderField}
             type="text"
             validate={requiredtitle}
@@ -45,7 +43,7 @@ let ReduxForm = props => {
         <label>Enter Description</label>
         <div>
           <Field
-            name="lastName"
+            name="description"
             component={renderField}
             type="text"
             placeholder="Last Name"
