@@ -74,3 +74,10 @@ body {
 .deletebutton:hover{
   cursor: pointer;
 }
+.errormessage{
+  background-color:rgb(232, 179, 179) ;
+  color: red;
+  width: 20%;
+  text-align: center;
+  
+}

@@ -32,7 +32,7 @@ function App() {
      <Route path="/StreamShow" component={StreamShow} />
     
     </div>
-      <StreamCreate   />
+   
     </BrowserRouter>
   );
 }
