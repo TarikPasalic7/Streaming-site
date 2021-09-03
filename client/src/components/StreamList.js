@@ -23,6 +23,10 @@ const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
             history.push( `/streams/edit/${id}`);
             
           }
+          function handleClickDelete(id) {
+            history.push( `/streams/delete/${id}`);
+            
+          }
     return (<div className="container">
             <h1>Streams</h1>
          {streams.map(element=>{
@@ -31,7 +35,7 @@ const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
                    <img className="pic" src={photo}/>
                    <div className="streamitems">
                    <h3 className="streamh">
-                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>   <button className="editbutton" onClick={ ()=>handleClickEdit(element.id)}>EDIT</button><button className="deletebutton">DELETE</button>    </div> 
+                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>   <button className="editbutton" onClick={ ()=>handleClickEdit(element.id)}>EDIT</button><button onClick={()=>handleClickDelete(element.id)} className="deletebutton">DELETE</button>    </div> 
               </div>)
          })
        } 
