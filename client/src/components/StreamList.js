@@ -1,7 +1,7 @@
 import React,{useEffect} from "react";
 import {connect} from 'react-redux';
 import photo from '../camera.png';
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 
 import { requestStreams, selectedUser } from '../actions';
 
@@ -16,17 +16,8 @@ const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
         }, [])
         const history = useHistory();
 
-        function handleClick() {
-          history.push("/StreamCreate");
-        }
-        function handleClickEdit(id) {
-            history.push( `/streams/edit/${id}`);
-            
-          }
-          function handleClickDelete(id) {
-            history.push( `/streams/delete/${id}`);
-            
-          }
+       
+       
     return (<div className="container">
             <h1>Streams</h1>
          {streams.map(element=>{
@@ -35,11 +26,11 @@ const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
                    <img className="pic" src={photo}/>
                    <div className="streamitems">
                    <h3 className="streamh">
-                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>   <button className="editbutton" onClick={ ()=>handleClickEdit(element.id)}>EDIT</button><button onClick={()=>handleClickDelete(element.id)} className="deletebutton">DELETE</button>    </div> 
+                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>   <Link className="editbutton" to={location => `/streams/edit/${element.id}`}>EDIT</Link><Link to={location => `/streams/delete/${element.id}`} className="deletebutton">DELETE</Link>    </div> 
               </div>)
          })
        } 
-        <button className="createbutton" onClick={handleClick}>Create Stream</button>
+        <Link className="createbutton" to={location => `/streams/new`}>Create Stream</Link>
     </div>)
 
 
