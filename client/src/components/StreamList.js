@@ -5,7 +5,7 @@ import { useHistory,Link } from "react-router-dom";
 
 import { requestStreams, selectedUser } from '../actions';
 
-const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
+const StreamList =({userID,userName,streams,isPending,error,onRequestStreams})=>{
     useEffect(() => {
         async function fetchMyAPI() {
           onRequestStreams() //calling function with dispatch
@@ -20,13 +20,16 @@ const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
        
     return (<div className="container">
             <h1>Streams</h1>
+           
+            
          {streams.map(element=>{
                return( <div key ={element.id}  className="listcontainer">
                <div className="item">
                    <img className="pic" src={photo}/>
                    <div className="streamitems">
                    <h3 className="streamh">
-                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>   <Link className="editbutton" to={location => `/streams/edit/${element.id}`}>EDIT</Link><Link to={location => `/streams/delete/${element.id}`} className="deletebutton">DELETE</Link>    </div> 
+                       {console.log(element.userID)}
+                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>  {userID===element.userID?<div><Link className="editbutton" to={location => `/streams/edit/${element.id}`}>EDIT</Link><Link to={location => `/streams/delete/${element.id}`} className="deletebutton">DELETE</Link></div> :null}    </div> 
               </div>)
          })
        } 
@@ -37,7 +40,8 @@ const StreamList =({users,streams,isPending,error,onRequestStreams})=>{
 }
 const mapStateToProps = state => {
   
-    return {users:state.users,
+    return {userID:state.user.userID,
+        userName:state.user.userName,
       streams:state.requestStreams.streams,
       isPending:state.requestStreams.isPending,
       error:state.requestStreams 

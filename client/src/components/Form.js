@@ -40,6 +40,7 @@ let ReduxForm = props => {
         </div>
       </div>
       <div>
+      
         <label>Enter Description</label>
         <div>
           <Field
@@ -52,6 +53,8 @@ let ReduxForm = props => {
           />
         </div>
       </div>
+     
+     
       <div>
         <button type="submit" disabled={pristine || submitting}>
           Submit

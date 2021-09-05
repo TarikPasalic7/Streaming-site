@@ -14,6 +14,18 @@ export const selectedUser = (user) =>{
          
     }
 
+    
+ export const user =(user)=>{
+    
+    return{
+
+      type:"LOGGED_USER",
+      payload:user
+
+    }
+
+ }
+
     export const requestStreams =()=>(dispatch)=>{
 
 

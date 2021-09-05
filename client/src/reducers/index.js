@@ -6,20 +6,22 @@ import{
     REQUEST_STREAMS_SUCCESS,
     REQUEST_STREAMS_FAILED
 } from '../actions/constants'
-const userReducer =() =>{
 
-    return [
-       {title:'yesteday',duration:'3:03'},
-       {title:'Hey July',duration:'2:03'},
-       {title:'Greeay',duration:'3:43'}
+const userState={
+    userID:"",
+    userName:"Streamer"
+}
+const userReducer =(state=userState,action) =>{
 
-    ]
+    if(action.type ==='LOGGED_USER') 
+return Object.assign({},state,{userID:action.payload.userID,userName:action.payload.userName})
+return state;
 };
 
 const selectedUserReducer = (selectedSong= null,action) =>{
 
 if(action.type ==='SONG_SELECTED') 
-return action.payload;
+return  "Object.assign({},state,{streams:action.payload,isPending:false})"
 return selectedSong;
 
 }
@@ -50,7 +52,7 @@ switch(action.type){
 }
 
 export default combineReducers({
-    users:userReducer,
+    user:userReducer,
     selectedUser:selectedUserReducer,
     requestStreams:requestStreams,
     form:formReducer
