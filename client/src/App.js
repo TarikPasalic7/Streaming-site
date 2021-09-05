@@ -29,7 +29,7 @@ function App() {
      <Route path="/streams/new" component={StreamCreate} />
      <Route path="/streams/edit/:id" component={StreamEdit} />
      <Route path="/streams/delete/:id" component={StreamDelete} />
-     <Route path="/StreamShow" component={StreamShow} />
+     <Route path="/streams/:id" component={StreamShow} />
     
     </div>
    

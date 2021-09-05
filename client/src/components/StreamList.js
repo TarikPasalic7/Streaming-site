@@ -27,9 +27,9 @@ const StreamList =({userID,userName,streams,isPending,error,onRequestStreams})=>
                <div className="item">
                    <img className="pic" src={photo}/>
                    <div className="streamitems">
-                   <h3 className="streamh">
+                   <Link to={location => `/streams/${element.id}`} className="streamh">
                        {console.log(element.userID)}
-                     {element.title} </h3>      <div className="descriptiontag">{element.description}</div></div>  {userID===element.userID?<div><Link className="editbutton" to={location => `/streams/edit/${element.id}`}>EDIT</Link><Link to={location => `/streams/delete/${element.id}`} className="deletebutton">DELETE</Link></div> :null}    </div> 
+                     {element.title} </Link>      <div className="descriptiontag">{element.description}</div></div>  {userID===element.userID?<div><Link className="editbutton" to={location => `/streams/edit/${element.id}`}>EDIT</Link><Link to={location => `/streams/delete/${element.id}`} className="deletebutton">DELETE</Link></div> :null}    </div> 
               </div>)
          })
        } 
