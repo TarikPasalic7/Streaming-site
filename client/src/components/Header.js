@@ -14,9 +14,7 @@ const Header =()=>{
     const serId=useSelector(state=>state.user.userID);
     const dispatch=useDispatch();
     const onLoginSuccess = (res) => {
-        console.log('Login Success:', res.profileObj);
-        console.log("a",res.profileObj.googleId);
-        console.log("3",res.profileObj.name);
+     
      
         setShowloginButton(false);
         setShowlogoutButton(true);
@@ -41,12 +39,13 @@ const Header =()=>{
     };
 
     return (
-        <div>
-            <div>{userName}</div>
-            <h1>Header</h1>
+        <div className="header">
+            <div className="streamer">{userName}</div>
+         
            
             { showloginButton ?
                 <GoogleLogin
+                className="googlebtn"
                     clientId={clientId}
                     buttonText="Sign In"
                     onSuccess={onLoginSuccess}

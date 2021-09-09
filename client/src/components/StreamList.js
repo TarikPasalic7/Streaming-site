@@ -34,6 +34,7 @@ const StreamList =({userID,userName,streams,isPending,error,onRequestStreams})=>
          })
        } 
         <Link className="createbutton" to={location => `/streams/new`}>Create Stream</Link>
+    <br></br>
     </div>)
 
 
