@@ -1,20 +1,21 @@
-import axios from "axios";
-import Form  from "./Form";
-import React,{useEffect,useState} from "react";
-import { useLocation,useHistory } from "react-router-dom";
-import {useSelector} from 'react-redux';
+
+import React,{useEffect} from "react";
+import { useLocation} from "react-router-dom";
+import {connect} from 'react-redux';
+import { requestStreamId } from '../actions';
 import flvjs from 'flv.js'
-const StreamShow=()=>{
-    const userId=useSelector(state=>state.user.userID);
-    const [stream,setStream]=useState([]);
+import {useSelector} from 'react-redux';
+const StreamShow=({onRequestStream,data})=>{
+   // const list=useSelector(state=>state.requestStreams.streams); Another way to get state
     const location = useLocation();
-    const history = useHistory()
+   
     useEffect(() => {
-        async function fetchMyAPI() {
-            axios.get(`http://localhost:3001${location.pathname}`)
-            .then(function (response) {
-             setStream(response.data);
-            //************************* */
+      
+
+
+          async function fetchMyAPI() {
+           
+          onRequestStream(location.pathname) //calling function with dispatch
             if (flvjs.isSupported()) {
                 var videoElement = document.getElementById('videoElement');
                 var flvPlayer = flvjs.createPlayer({
@@ -26,14 +27,6 @@ const StreamShow=()=>{
                 flvPlayer.play();
             }
 
-            })
-
-
-
-           
-            .catch(function (error) {
-              console.log(error);
-            });
           }
         
           fetchMyAPI(); 
@@ -42,11 +35,15 @@ const StreamShow=()=>{
     }, [])
  
     return (<div>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  
+      <video width="620" height="440" id="videoElement" controls></video>
 
-      <video id="videoElement"></video>
-
-        <h1>   {stream.title} </h1>
-        <h3>{stream.description}</h3>
+        <h1>   {data.title} </h1>
+        <h3>{data.description}</h3>
       
        
     </div>)
@@ -54,4 +51,20 @@ const StreamShow=()=>{
 
 }
 
-export default StreamShow;
+const mapStateToProps = state => {
+  
+    return {
+     data:state.requestStream.stream
+    }; 
+  }
+  
+ const mapDispatchToProps = (dispatch) => {
+    
+    return {
+     
+      onRequestStream:(id)=>dispatch(requestStreamId(id))
+  
+    }; 
+  }  
+
+export default  connect(mapStateToProps,mapDispatchToProps)(StreamShow);

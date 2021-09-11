@@ -106,8 +106,9 @@ body {
 .errormessage{
   background-color:rgb(232, 179, 179) ;
   color: red;
-  width: 20%;
+ 
   text-align: center;
+ 
 
   
 }
@@ -149,4 +150,52 @@ body {
   border-radius: 7% !important;
   float: right !important;
   margin: 3px 20px !important;
+}
+.navright{
+  float: right;
+}
+.streamsbtn{
+  background-color: rgb(99, 70, 232) !important;
+  color: white !important;
+  border-radius: 7% !important;
+ 
+  display: inline-block;
+  margin: 3px 10px !important;
+  text-decoration: none;
+  padding: 0.7em 0.9em;
+}
+.streamsbtn:hover{
+ cursor: pointer;
+}
+
+.submitform{
+ border:solid black 1px;
+ width: 40%;
+ margin: 50px auto;
+ height: 200px;
+ display: inline-block;
+ border-radius: 10px;
+ background-color: cornflowerblue;
+ color: white;
+ font-size: larger;
+
+   
+}
+.forminput{
+  display: inline-flex;
+  padding: 10px;
+}
+.field{
+  display:inline-block ;
+  margin-right: 80px;
+}
+.field2{
+  display:inline-block ;
+  margin-right: 20px;
+}
+.btnsub{
+  padding: 6px;
+  color: white;
+  margin: 5px;
+  background-color: tomato;
 }

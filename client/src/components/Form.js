@@ -25,24 +25,29 @@ let ReduxForm = props => {
      
   const { handleSubmit, pristine, reset, submitting  } = props
   return (
-    <form onSubmit={handleSubmit}>
-       <div>
-           
-        <label>Enter Title</label>
-        <div>
-          <Field
+    <form className="submitform" onSubmit={handleSubmit}>
+        
+       
+       <div className="forminput" >
+       <label   className="field">Enter Title</label>
+       
+        <Field
             name="title"
             component={renderField}
             type="text"
             validate={requiredtitle}
+            className="field"
            
           />
-        </div>
+       
+       
+        
       </div>
       <div>
       
-        <label>Enter Description</label>
-        <div>
+      
+        <div className="forminput">
+        <label  className="field2">Enter Description</label>
           <Field
             name="description"
             component={renderField}
@@ -56,10 +61,10 @@ let ReduxForm = props => {
      
      
       <div>
-        <button type="submit" disabled={pristine || submitting}>
+        <button type="submit" className="btnsub" disabled={pristine || submitting}>
           Submit
         </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
+        <button type="button" className="btnsub" disabled={pristine || submitting} onClick={reset}>
           Clear Values
         </button>
       </div>

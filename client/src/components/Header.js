@@ -2,13 +2,14 @@ import React,{useState} from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import {connect,useDispatch,useSelector} from 'react-redux';
 import { user } from '../actions';
+import { useHistory,Link } from 'react-router-dom';
 const clientId = "529021270692-dkbtlhpg4ljq7r873jhrm9v24sth1eki.apps.googleusercontent.com";
 
 const Header =()=>{
 
     const [showloginButton, setShowloginButton] = useState(true);
     const [showlogoutButton, setShowlogoutButton] = useState(false);
-    
+  
     
     const userName=useSelector(state=>state.user.userName);
     const serId=useSelector(state=>state.user.userID);
@@ -36,14 +37,21 @@ const Header =()=>{
         console.clear();
         setShowloginButton(true);
         setShowlogoutButton(false);
+        const temp={
+            userID:"",
+            userName:"Streamer"
+        }
+         dispatch(user(temp));
     };
 
     return (
         <div className="header">
             <div className="streamer">{userName}</div>
-         
-           
-            { showloginButton ?
+           <div className="navright">
+       
+         <Link className="streamsbtn" to={location => `/`}>All Streams</Link>
+    
+           { showloginButton ?
                 <GoogleLogin
                 className="googlebtn"
                     clientId={clientId}
@@ -62,6 +70,9 @@ const Header =()=>{
                 >
                 </GoogleLogout> : null
             }
+
+           </div>
+           
         </div>
     );
 

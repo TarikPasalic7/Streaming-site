@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import photo from '../camera.png';
 import { useHistory,Link } from "react-router-dom";
 
-import { requestStreams, selectedUser } from '../actions';
+import { requestStreams } from '../actions';
 
-const StreamList =({userID,userName,streams,isPending,error,onRequestStreams})=>{
+const StreamList =({userID,streams,onRequestStreams})=>{
     useEffect(() => {
         async function fetchMyAPI() {
           onRequestStreams() //calling function with dispatch
@@ -20,20 +20,22 @@ const StreamList =({userID,userName,streams,isPending,error,onRequestStreams})=>
        
     return (<div className="container">
             <h1>Streams</h1>
-           
+           {console.log("sss",streams)}
             
          {streams.map(element=>{
                return( <div key ={element.id}  className="listcontainer">
                <div className="item">
                    <img className="pic" src={photo}/>
                    <div className="streamitems">
+                   
                    <Link to={location => `/streams/${element.id}`} className="streamh">
-                       {console.log(element.userID)}
+                  
                      {element.title} </Link>      <div className="descriptiontag">{element.description}</div></div>  {userID===element.userID?<div><Link className="editbutton" to={location => `/streams/edit/${element.id}`}>EDIT</Link><Link to={location => `/streams/delete/${element.id}`} className="deletebutton">DELETE</Link></div> :null}    </div> 
               </div>)
          })
        } 
-        <Link className="createbutton" to={location => `/streams/new`}>Create Stream</Link>
+       
+       {  userID===""?"":<Link className="createbutton" to={location => `/streams/new`}>Create Stream</Link>} 
     <br></br>
     </div>)
 
@@ -52,7 +54,7 @@ const mapStateToProps = state => {
   const mapDispatchToProps = (dispatch) => {
     
     return {
-      selectedUser,
+     
       onRequestStreams:()=>dispatch(requestStreams())
   
     }; 
